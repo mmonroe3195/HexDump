@@ -93,24 +93,6 @@ main PROC
 mov	ax, @data
 mov	ds, ax
 
-COMMENT!
-mov	ax, 0FFFFh
-;mov	dx, 0FFFFh
-;call WriteInt
-;call	dumpregs
-call	PrintInt
-;call	dumpregs
-!
-
-COMMENT!
-mov	cx, 11
-mov	bx, offset	arr
-;call	DumpRegs
-call	HexOut
-;call	DumpRegs
-!
-
-;COMMENT !
 std
 call  dumpregs
 call	savemachinestate
@@ -152,7 +134,6 @@ pushf
 
 mov	oldSI, si
 mov	si, OFFSET oldval
-;mov	si, oldval
 mov	[si], ax
 add	si, 2
 mov	[si], bx
@@ -248,7 +229,6 @@ mov	[si], es
 add	si, 2
 mov	[si], ss
 mov	si, 0
-;mov	cx, 1
 top:
 	mov	bx, newval[si]
 	cmp bx, oldval[si]
@@ -534,8 +514,7 @@ top:
 	xchg	dl, al
 	pop	cx
 	call	WriteHexDigit
-  ;mov	dl, ' '
-	;call	WriteChar
+
 
 	mov	dl, [bx]
 	call	WriteHexDigit
